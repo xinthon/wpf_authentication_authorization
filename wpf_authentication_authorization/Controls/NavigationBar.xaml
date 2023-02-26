@@ -1,0 +1,67 @@
+﻿<UserControl
+    x:Class="wpf_authentication_authorization.Controls.NavigationBar"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:helpers="clr-namespace:wpf_authentication_authorization.Helpers"
+    xmlns:local="clr-namespace:wpf_authentication_authorization.Controls"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    d:DesignHeight="1000"
+    d:DesignWidth="230"
+    mc:Ignorable="d">
+    <Grid>
+        <Border Margin="50,20,50,20" Background="Black">
+            <Border.Effect>
+                <DropShadowEffect
+                    BlurRadius="50"
+                    Direction="360"
+                    Opacity="0.8"
+                    ShadowDepth="30"
+                    Color="Black" />
+            </Border.Effect>
+        </Border>
+        <Grid Background="{StaticResource BrushPrimary1}">
+            <Grid.Resources>
+                <Style BasedOn="{StaticResource NavButton}" TargetType="RadioButton" />
+            </Grid.Resources>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50" />
+                <RowDefinition Height="40" />
+                <RowDefinition Height="40" />
+                <RowDefinition Height="40" />
+                <RowDefinition Height="40" />
+                <RowDefinition Height="40" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <Grid Grid.Row="0">
+                <TextBlock
+                    Padding="15,0"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Center"
+                    FontSize="18"
+                    Foreground="White">
+                    My Sample App
+                </TextBlock>
+            </Grid>
+
+            <RadioButton
+                Grid.Row="1"
+                Command="{Binding UpdateCurrentView}"
+                CommandParameter="{x:Static helpers:ViewType.Home}"
+                Content="Home" />
+
+            <RadioButton
+                Grid.Row="2"
+                Command="{Binding UpdateCurrentView}"
+                CommandParameter="{x:Static helpers:ViewType.Setting}"
+                Content="Setting" />
+
+            <RadioButton
+                Grid.Row="3"
+                Command="{Binding UpdateCurrentView}"
+                Content="Help" />
+        </Grid>
+    </Grid>
+</UserControl>
