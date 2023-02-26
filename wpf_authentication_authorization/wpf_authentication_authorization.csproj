@@ -21,4 +21,8 @@
     <ProjectReference Include="..\wpf_authentication_authorization.Core\wpf_authentication_authorization.Core.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="State\" />
+  </ItemGroup>
+
 </Project>

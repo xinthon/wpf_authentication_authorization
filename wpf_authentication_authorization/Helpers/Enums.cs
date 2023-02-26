@@ -6,10 +6,8 @@ using System.Threading.Tasks;
 
 namespace wpf_authentication_authorization.Helpers
 {
-    internal enum ViewType {
-        Home,
-        Setting,
-        User,
-        Role
+    internal enum LoginResult {
+        Success,
+        Failed,
     }
 }

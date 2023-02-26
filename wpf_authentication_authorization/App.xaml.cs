@@ -12,7 +12,6 @@ using System.Threading.Tasks;
 using System.Windows;
 using wpf_authentication_authorization.Core.Data;
 using wpf_authentication_authorization.Core.HostBuilders;
-using wpf_authentication_authorization.State;
 
 namespace wpf_authentication_authorization
 {
@@ -33,7 +32,7 @@ namespace wpf_authentication_authorization
 
             hostBuilder.ConfigureServices((context, services) =>
             {
-                services.AddSingleton<INavigator, Navigators>();
+
             });
 
             hostBuilder

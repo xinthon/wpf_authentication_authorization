@@ -11,11 +11,24 @@ using wpf_authentication_authorization.Commands;
 using wpf_authentication_authorization.Core.Services.Interfaces;
 using wpf_authentication_authorization.Core.Services;
 using Microsoft.Extensions.DependencyInjection;
+using wpf_authentication_authorization.Helpers;
 
 namespace wpf_authentication_authorization.ViewModels
 {
     internal class LoginViewModel : Screen
     {
+        private readonly IAuthenticationService authenticationService;
+        public Action<LoginResult, string>? CallBack;
+
+        public LoginViewModel()
+        {
+            this.authenticationService = Core.Program.hostBuilder.Services.GetRequiredService<IAuthenticationService>();
+            LoginCommand = new LoginCommand(LogIn, LogInValidation);
+        }
+
+        public ICommand? LoginCommand { get; }
+
+
         public string username { get; set; } = string.Empty;
         public string Username
         {
@@ -38,15 +51,6 @@ namespace wpf_authentication_authorization.ViewModels
             }
         }
 
-        private readonly IAuthenticationService authenticationService;
-        public LoginViewModel()
-        {
-            authenticationService = Core.Program.hostBuilder.Services.GetRequiredService<IAuthenticationService>();
-            LoginCommand = new LoginCommand(LogIn, LogInValidation);
-        }
-
-        public ICommand? LoginCommand { get; }
-
         private bool LogInValidation(string password)
         {
             return !string.IsNullOrEmpty(username) && !string.IsNullOrEmpty(password) && password.Length > 5;
@@ -62,11 +66,12 @@ namespace wpf_authentication_authorization.ViewModels
                     if (authUser != null)
                     {
                         Core.Program.Auth = authUser;
+                        CallBack?.Invoke(LoginResult.Success, "Login success");
                     }
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(ex.Message);
+                    CallBack?.Invoke(LoginResult.Failed, ex.Message);
                 }
             });
         }

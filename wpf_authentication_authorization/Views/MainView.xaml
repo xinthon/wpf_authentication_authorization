@@ -2,9 +2,9 @@
     x:Class="wpf_authentication_authorization.Views.MainView"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="clr-namespace:wpf_authentication_authorization.Controls"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:wpf_authentication_authorization.Views"
-    xmlns:controls="clr-namespace:wpf_authentication_authorization.Controls"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     Title="MainView"
     Width="800"
@@ -19,8 +19,10 @@
         <Frame
             x:Name="ActiveItem"
             Grid.Row="1"
-            Background="White" />
+            Background="White"
+            NavigationUIVisibility="Hidden" 
+            />
 
-        <controls:LoadingScreen/>
+        <controls:LoadingScreen />
     </Grid>
 </Window>

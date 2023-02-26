@@ -49,13 +49,11 @@
             <RadioButton
                 Grid.Row="1"
                 Command="{Binding UpdateCurrentView}"
-                CommandParameter="{x:Static helpers:ViewType.Home}"
                 Content="Home" />
 
             <RadioButton
                 Grid.Row="2"
                 Command="{Binding UpdateCurrentView}"
-                CommandParameter="{x:Static helpers:ViewType.Setting}"
                 Content="Setting" />
 
             <RadioButton
